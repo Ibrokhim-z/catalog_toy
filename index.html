@@ -8,308 +8,300 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    :root {
-        --gold: #D4AF37;
-        --white: #ffffff;
-        --beige: #F5F0E6;
-        --dark: #2C1810;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-        font-family: 'Montserrat', sans-serif;
-        background: var(--beige);
-        color: var(--dark);
-        line-height: 1.6;
-    }
-    a { text-decoration:none; color:inherit; }
-    img { max-width:100%; display:block; }
+        :root {
+            --gold: #D4AF37;
+            --white: #ffffff;
+            --beige: #F5F0E6;
+            --dark: #2C1810;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--beige);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        a { text-decoration:none; color:inherit; }
+        img { max-width:100%; display:block; }
 
-    /* Header */
-    header {
-        position: fixed;
-        top:0; left:0; right:0;
-        background: rgba(255,255,255,0.95);
-        z-index:1000;
-        box-shadow:0 2px 10px rgba(0,0,0,.1);
-    }
-    .nav-container {
-        max-width:1200px; margin:auto; padding:1rem;
-        display:flex; justify-content:space-between; align-items:center;
-    }
-    .logo { font-weight:700; font-size:1.5rem; color:var(--gold); }
-    .logo span { color:var(--dark); }
-    nav ul { display:flex; gap:2rem; list-style:none; }
-    nav a { font-weight:500; transition:color .3s; }
-    nav a:hover { color:var(--gold); }
-    .mobile-toggle { display:none; font-size:1.5rem; cursor:pointer; }
+        /* Header */
+        header {
+            position: fixed;
+            top:0; left:0; right:0;
+            background: rgba(255,255,255,0.95);
+            z-index:1000;
+            box-shadow:0 2px 10px rgba(0,0,0,.1);
+        }
+        .nav-container {
+            max-width:1200px; margin:auto; padding:1rem;
+            display:flex; justify-content:space-between; align-items:center;
+        }
+        .logo { font-weight:700; font-size:1.5rem; color:var(--gold); }
+        .logo span { color:var(--dark); }
+        nav ul { display:flex; gap:2rem; list-style:none; }
+        nav a { font-weight:500; transition:color .3s; }
+        nav a:hover { color:var(--gold); }
+        .mobile-toggle { display:none; font-size:1.5rem; cursor:pointer; }
 
-    /* Hero */
-    .hero {
-        height:100vh;
-        background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
-        display:flex; flex-direction:column; justify-content:center; align-items:center;
-        text-align:center; color:#fff; padding:0 1rem;
-    }
-    .hero h1 { font-size:3rem; margin-bottom:1rem; }
-    .hero p { font-size:1.2rem; max-width:600px; margin-bottom:2rem; }
-    .btn {
-        background:var(--gold); color:#fff; padding:.8rem 2rem; border-radius:50px; font-weight:600;
-        transition:transform .3s, background .3s; display:inline-block;
-    }
-    .btn:hover { background:#b8932a; transform:scale(1.05); }
+        /* Hero */
+        .hero {
+            height:100vh;
+            background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
+            display:flex; flex-direction:column; justify-content:center; align-items:center;
+            text-align:center; color:#fff; padding:0 1rem;
+        }
+        .hero h1 { font-size:3rem; margin-bottom:1rem; }
+        .hero p { font-size:1.2rem; max-width:600px; margin-bottom:2rem; }
+        .btn {
+            background:var(--gold); color:#fff; padding:.8rem 2rem; border-radius:50px; font-weight:600;
+            transition:transform .3s, background .3s; display:inline-block;
+        }
+        .btn:hover { background:#b8932a; transform:scale(1.05); }
 
-    /* Section */
-    section { padding:5rem 1rem; max-width:1200px; margin:auto; }
-    h2 { text-align:center; font-size:2.2rem; margin-bottom:3rem; color:var(--dark); position:relative; }
-    h2::after { content:''; width:80px; height:3px; background:var(--gold); position:absolute; bottom:-15px; left:50%; transform:translateX(-50%); }
+        /* Section */
+        section { padding:5rem 1rem; max-width:1200px; margin:auto; }
+        h2 { text-align:center; font-size:2.2rem; margin-bottom:3rem; color:var(--dark); position:relative; }
+        h2::after { content:''; width:80px; height:3px; background:var(--gold); position:absolute; bottom:-15px; left:50%; transform:translateX(-50%); }
 
-    /* Catalog */
-    .filters { text-align:center; margin-bottom:2rem; }
-    .filters button {
-        background:none; border:2px solid var(--gold); color:var(--dark); padding:.5rem 1rem; margin:0 .3rem; border-radius:30px;
-        cursor:pointer; transition:all .3s; font-weight:500;
-    }
-    .filters button.active, .filters button:hover { background:var(--gold); color:#fff; }
+        /* === НАШИ ЗАЛЫ — КОМПАКТНЫЕ === */
+        .halls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            perspective: 1000px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-    .catalog-grid {
-        display:grid;
-        grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
-        gap:2rem;
-        perspective: 1000px;
-    }
+        .flip-card {
+            background: transparent;
+            min-height: 480px;
+            perspective: 1000px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all .6s;
+        }
+        .flip-card.show { opacity: 1; transform: none; }
 
-    /* === FLIP CARD — ПОЛНОСТЬЮ АДАПТИВНО === */
-    .flip-card {
-        background-color: transparent;
-        width: 100%;
-        min-height: 480px;
-        perspective: 1000px;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all .6s;
-    }
-    .flip-card.show { opacity: 1; transform: none; }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 480px;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.1);
+            display: flex;
+            flex-direction: column;
+        }
 
-    .flip-card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        min-height: 480px;
-        text-align: center;
-        transition: transform 0.8s;
-        transform-style: preserve-3d;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,.1);
-        display: flex;
-        flex-direction: column;
-    }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
 
-    .flip-card.flipped .flip-card-inner {
-        transform: rotateY(180deg);
-    }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .flip-card-front, .flip-card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        border-radius: 15px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    }
+        .flip-card-front { background: #fff; }
+        .flip-card-front img { height: 200px; width: 100%; object-fit: cover; }
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-body h3 { font-size: 1.4rem; margin-bottom: .5rem; }
+        .card-body p { font-size: .95rem; color: #666; margin-bottom: 1rem; }
+        .capacity { font-size: .9rem; color: #888; display: flex; align-items: center; gap: .5rem; }
+        .card-body .btn.flip-trigger {
+            margin-top: auto;
+            align-self: center;
+            padding: .6rem 1.5rem;
+            font-size: .9rem;
+        }
 
-    /* Лицевая сторона */
-    .flip-card-front {
-        background: #fff;
-    }
-
-    .flip-card-front img {
-        height: 200px;
-        object-fit: cover;
-    }
-
-    .card-body {
-        padding: 1.5rem;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .card-body h3 { font-size: 1.4rem; margin-bottom: .5rem; }
-    .card-body p { font-size: .95rem; color: #666; margin-bottom: 1rem; }
-    .price { font-weight: 700; color: var(--gold); font-size: 1.2rem; }
-    .capacity { font-size: .9rem; color: #888; }
-
-    .card-body .btn.flip-trigger {
-        margin-top: auto;
-        align-self: center;
-        padding: .6rem 1.5rem;
-        font-size: .9rem;
-    }
-
-    /* Обратная сторона */
-    .flip-card-back {
-        background: linear-gradient(135deg, #f9f7f3, #fff);
-        color: var(--dark);
-        transform: rotateY(180deg);
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
-    .back-image {
-        height: 140px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 1rem;
-    }
-
-    .flip-card-back h3 {
-        color: var(--gold);
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-    }
-
-    .flip-card-back ul {
-        list-style: none;
-        text-align: left;
-        margin: 0.5rem 0;
-        flex-grow: 1;
-        padding: 0;
-    }
-
-    .flip-card-back ul li {
-        margin-bottom: 0.7rem;
-        position: relative;
-        padding-left: 1.5rem;
-        font-size: 0.95rem;
-    }
-
-    .flip-card-back ul li::before {
-        content: '✓';
-        color: var(--gold);
-        font-weight: bold;
-        position: absolute;
-        left: 0;
-    }
-
-    .back-btn {
-        background: var(--dark);
-        color: #fff;
-        padding: 0.6rem 1.5rem;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        align-self: center;
-        margin-top: auto;
-        cursor: pointer;
-        min-width: 120px;
-    }
-
-    /* === АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ === */
-    @media (max-width: 480px) {
-        .flip-card,
-        .flip-card-inner,
         .flip-card-back {
-            min-height: 540px;
+            background: linear-gradient(135deg, #f9f7f3, #fff);
+            color: var(--dark);
+            transform: rotateY(180deg);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-
-        .flip-card-front img,
-        .back-image {
-            height: 160px;
+        .back-image { height: 140px; width: 100%; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
+        .flip-card-back h3 { color: var(--gold); margin-bottom: 1rem; font-size: 1.3rem; }
+        .flip-card-back ul {
+            list-style: none;
+            text-align: left;
+            margin: 0.5rem 0;
+            flex-grow: 1;
+            padding: 0;
         }
-
-        .card-body,
-        .flip-card-back {
-            padding: 1.2rem;
-        }
-
         .flip-card-back ul li {
-            font-size: 0.9rem;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.7rem;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.95rem;
         }
-
-        .card-body .btn.flip-trigger,
+        .flip-card-back ul li::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
         .back-btn {
-            padding: 0.5rem 1.2rem;
-            font-size: 0.85rem;
+            background: var(--dark);
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            align-self: center;
+            margin-top: auto;
+            cursor: pointer;
+            min-width: 120px;
         }
-    }
 
-    @media (max-width: 375px) {
-        .flip-card,
-        .flip-card-inner,
-        .flip-card-back {
-            min-height: 560px;
+        /* === МЕНЮ — ИСПРАВЛЕНО: КАРТИНКИ НЕ ВЫЛЕЗАЮТ === */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
-    }
 
-    /* Gallery */
-    .swiper { padding:2rem 0; }
-    .swiper-slide img { border-radius:10px; height:250px; object-fit:cover; }
+        .menu-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all .6s;
+        }
+        .menu-card.show { opacity: 1; transform: none; }
 
-    /* Reviews */
-    .reviews-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:2rem; }
-    .review {
-        background:#fff; padding:2rem; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,.05);
-        opacity:0; transform:translateY(30px); transition:all .6s;
-    }
-    .review.show { opacity:1; transform:none; }
-    .review .stars { color:var(--gold); margin-bottom:1rem; }
-    .review p { font-style:italic; margin-bottom:1rem; }
-    .review .author { display:flex; align-items:center; gap:1rem; }
-    .review .author img { width:50px; height:50px; border-radius:50%; object-fit:cover; }
-    .review .author strong { font-size:1rem; }
+        .menu-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            object-position: center;
+        }
 
-    /* Contact */
-    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
-    .contact-info { background:#fff; padding:2rem; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,.05); }
-    .contact-info h3 { margin-bottom:1.5rem; color:var(--gold); }
-    .contact-info ul { list-style:none; }
-    .contact-info li { margin-bottom:1rem; display:flex; align-items:center; gap:1rem; font-size:1rem; }
-    .contact-info i { color:var(--gold); width:20px; }
-    .map { border-radius:15px; overflow:hidden; height:400px; margin-top:3rem; }
-    .map iframe { width:100%; height:100%; border:0; }
+        .menu-body {
+            padding: 1.5rem;
+        }
 
-    form { background:#fff; padding:2rem; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,.05); }
-    form h3 { margin-bottom:1.5rem; color:var(--gold); text-align:center; }
-    .form-group { margin-bottom:1rem; }
-    .form-group label { display:block; margin-bottom:.5rem; font-weight:500; }
-    .form-group input, .form-group textarea {
-        width:100%; padding:.8rem; border:1px solid #ddd; border-radius:8px; font-family:inherit;
-    }
-    .form-group textarea { resize:vertical; height:120px; }
+        .menu-body h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: .5rem;
+            text-align: center;
+        }
 
-    /* Footer */
-    footer { background:var(--dark); color:#fff; text-align:center; padding:2rem 1rem; }
-    .social { margin:1rem 0; }
-    .social a { color:#fff; font-size:1.5rem; margin:0 .5rem; transition:color .3s; }
-    .social a:hover { color:var(--gold); }
+        .menu-body .price-per-person {
+            text-align: center;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
 
-    /* WhatsApp */
-    .whatsapp-float {
-        position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; width:60px; height:60px;
-        border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.8rem;
-        box-shadow:0 3px 10px rgba(0,0,0,.3); z-index:1000; transition:transform .3s;
-    }
-    .whatsapp-float:hover { transform:scale(1.1); }
+        .menu-body ul {
+            list-style: none;
+            text-align: left;
+        }
 
-    /* Responsive */
-    @media (max-width:992px) {
-        .contact-grid { grid-template-columns:1fr; }
-    }
-    @media (max-width:768px) {
-        .mobile-toggle { display:block; }
-        nav ul { position:fixed; top:70px; left:-100%; width:100%; height:calc(100vh - 70px); background:#fff;
-            flex-direction:column; align-items:center; justify-content:flex-start; padding-top:3rem; transition:left .4s; }
-        nav ul.show { left:0; }
-        .hero h1 { font-size:2.2rem; }
-        .hero p { font-size:1rem; }
-    }
-</style>
+        .menu-body ul li {
+            margin-bottom: .6rem;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: .95rem;
+        }
+
+        .menu-body ul li::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Gallery */
+        .swiper { padding:2rem 0; }
+        .swiper-slide img { border-radius:10px; height:250px; object-fit:cover; }
+
+        /* Instagram Reviews */
+        .instagram-reviews {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.05);
+            text-align: center;
+        }
+        .instagram-reviews iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* Contact */
+        .contact-info {
+            background:#fff; padding:2rem; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,.05);
+            text-align: center;
+        }
+        .contact-info h3 { margin-bottom:1.5rem; color:var(--gold); }
+        .contact-info ul { list-style:none; }
+        .contact-info li { margin-bottom:1rem; display:flex; align-items:center; justify-content:center; gap:1rem; font-size:1rem; }
+        .contact-info i { color:var(--gold); width:20px; }
+        .map { border-radius:15px; overflow:hidden; height:400px; margin-top:3rem; }
+        .map iframe { width:100%; height:100%; border:0; }
+
+        /* Footer */
+        footer { background:var(--dark); color:#fff; text-align:center; padding:2rem 1rem; }
+        .social { margin:1rem 0; }
+        .social a { color:#fff; font-size:1.5rem; margin:0 .5rem; transition:color .3s; }
+        .social a:hover { color:var(--gold); }
+
+        /* WhatsApp — ИСПРАВЛЕНО: ИКОНКА ВНУТРИ */
+        .whatsapp-float {
+            position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; width:60px; height:60px;
+            border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.8rem;
+            box-shadow:0 3px 10px rgba(0,0,0,.3); z-index:1000; transition:transform .3s;
+        }
+        .whatsapp-float:hover { transform:scale(1.1); }
+
+        /* Responsive */
+        @media (max-width:768px) {
+            .mobile-toggle { display:block; }
+            nav ul { position:fixed; top:70px; left:-100%; width:100%; height:calc(100vh - 70px); background:#fff;
+                flex-direction:column; align-items:center; justify-content:flex-start; padding-top:3rem; transition:left .4s; }
+            nav ul.show { left:0; }
+            .hero h1 { font-size:2.2rem; }
+            .hero p { font-size:1rem; }
+            .halls-grid { max-width: 100%; }
+        }
+
+        @media (max-width:480px) {
+            .flip-card, .flip-card-inner, .flip-card-back { min-height: 540px; }
+            .flip-card-front img, .back-image, .menu-card img { height: 160px; }
+            .card-body, .flip-card-back, .menu-body { padding: 1.2rem; }
+        }
+    </style>
 </head>
 <body>
 
@@ -320,7 +312,8 @@
             <nav>
                 <ul>
                     <li><a href="#home">Главная</a></li>
-                    <li><a href="#catalog">Залы</a></li>
+                    <li><a href="#halls">Залы</a></li>
+                    <li><a href="#menu">Меню</a></li>
                     <li><a href="#gallery">Галерея</a></li>
                     <li><a href="#reviews">Отзывы</a></li>
                     <li><a href="#contact">Контакты</a></li>
@@ -335,31 +328,23 @@
         <h1>Тойхана «Алтын Орда»</h1>
         <p>Роскошные банкетные залы для вашего незабываемого торжества</p>
         <a href="https://wa.me/77051234567?text=Здравствуйте!%20Хочу%20забронировать%20зал." class="btn" target="_blank">
-            <i class="fab fa-whatsapp"></i> Забронировать
+            Забронировать
         </a>
     </section>
 
-    <!-- Catalog -->
-    <section id="catalog">
+    <!-- Залы -->
+    <section id="halls">
         <h2>Наши залы</h2>
-        <div class="filters">
-            <button data-filter="all" class="active">Все</button>
-            <button data-filter="price-low">До 500 000 ₸</button>
-            <button data-filter="price-high">От 500 000 ₸</button>
-            <button data-filter="capacity-small">До 100 гостей</button>
-            <button data-filter="capacity-large">От 100 гостей</button>
-        </div>
-        <div class="catalog-grid">
-            <!-- Hall 1 -->
-            <div class="flip-card" data-price="450000" data-capacity="80">
+        <div class="halls-grid">
+            <!-- Зал 1 -->
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Зал А">
+                        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Зал Алтын">
                         <div class="card-body">
                             <h3>Зал «Алтын»</h3>
                             <p>Идеален для камерных свадеб и юбилеев</p>
-                            <p class="price">450 000 ₸</p>
-                            <p class="capacity"><i class="fas fa-users"></i> до 80 гостей</p>
+                            <p class="capacity"><i class="fas fa-users"></i> До 80 гостей</p>
                             <div class="btn flip-trigger">Подробнее</div>
                         </div>
                     </div>
@@ -378,16 +363,15 @@
                 </div>
             </div>
 
-            <!-- Hall 2 -->
-            <div class="flip-card" data-price="750000" data-capacity="150">
+            <!-- Зал 2 -->
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Зал B">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Зал Орда">
                         <div class="card-body">
                             <h3>Зал «Орда»</h3>
                             <p>Просторный зал с панорамными окнами</p>
-                            <p class="price">750 000 ₸</p>
-                            <p class="capacity"><i class="fas fa-users"></i> до 150 гостей</p>
+                            <p class="capacity"><i class="fas fa-users"></i> До 150 гостей</p>
                             <div class="btn flip-trigger">Подробнее</div>
                         </div>
                     </div>
@@ -405,39 +389,48 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Hall 3 -->
-            <div class="flip-card" data-price="1200000" data-capacity="300">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Зал C">
-                        <div class="card-body">
-                            <h3>Зал «Империя»</h3>
-                            <p>Грандиозный зал для масштабных торжеств</p>
-                            <p class="price">1 200 000 ₸</p>
-                            <p class="capacity"><i class="fas fa-users"></i> до 300 гостей</p>
-                            <div class="btn flip-trigger">Подробнее</div>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="https://images.unsplash.com/photo-1606890737304-3955c48f4295?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Интерьер" class="back-image">
-                        <h3>Зал «Империя»</h3>
-                        <ul>
-                            <li>Двухуровневый зал с балконом</li>
-                            <li>Профессиональная акустика</li>
-                            <li>Лазерное шоу и дым-машины</li>
-                            <li>VIP-зоны и лаунж</li>
-                            <li>Круглосуточная охрана</li>
-                        </ul>
-                        <div class="back-btn flip-trigger">Назад</div>
-                    </div>
+    <!-- Меню за 1 человека -->
+    <section id="menu" style="background:#fff;">
+        <h2>Меню за 1 человека</h2>
+        <div class="menu-grid">
+            <!-- Меню 3500 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Меню 3500">
+                <div class="menu-body">
+                    <h3>Стандарт</h3>
+                    <div class="price-per-person">3 500 ₸</div>
+                    <ul>
+                        <li>Салат "Цезарь"</li>
+                        <li>Горячее: курица с картофелем</li>
+                        <li>Фруктовая нарезка</li>
+                        <li>Хлеб, чай, вода</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Меню 5000 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Меню 5000">
+                <div class="menu-body">
+                    <h3>Премиум</h3>
+                    <div class="price-per-person">5 000 ₸</div>
+                    <ul>
+                        <li>Салат "Греческий"</li>
+                        <li>Горячее: стейк с овощами</li>
+                        <li>Морепродукты</li>
+                        <li>Десерт: тирамису</li>
+                        <li>Безлимитные напитки</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery -->
-    <section id="gallery" style="background:#fff;">
+    <section id="gallery">
         <h2>Галерея мероприятий</h2>
         <div class="swiper">
             <div class="swiper-wrapper">
@@ -445,75 +438,31 @@
                 <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1464366400600-7168bc0bbd9d?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 2"></div>
                 <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 3"></div>
                 <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1606890737304-3955c48f4295?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 4"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1606890658317-4e21c6b6c7ef?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 5"></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
     </section>
 
-    <!-- Reviews -->
-    <section id="reviews">
-        <h2>Отзывы клиентов</h2>
-        <div class="reviews-grid">
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <p>«Идеальное место для свадьбы! Всё было на высшем уровне, гости в восторге.»</p>
-                <div class="author">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Айгуль">
-                    <strong>Айгуль М.</strong>
-                </div>
-            </div>
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <p>«Очень вкусная кухня, внимательный персонал. Рекомендую всем!»</p>
-                <div class="author">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ерлан">
-                    <strong>Ерлан К.</strong>
-                </div>
-            </div>
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <p>«Зал «Орда» просто шикарный! Спасибо за организацию юбилея.»</p>
-                <div class="author">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Гульнара">
-                    <strong>Гульнара С.</strong>
-                </div>
-            </div>
+    <!-- Instagram Reviews -->
+    <section id="reviews" style="background:#fff;">
+        <h2>Отзывы в Instagram</h2>
+        <div class="instagram-reviews">
+            <iframe src="https://www.instagram.com/altyn_orda/embed" allowfullscreen></iframe>
         </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" style="background:#fff;">
+    <section id="contact">
         <h2>Контакты</h2>
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h3>Свяжитесь с нами</h3>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> г. Алматы, ул. Абая 150</li>
-                    <li><i class="fas fa-phone"></i> +7 (705) 123-45-67</li>
-                    <li><i class="fab fa-whatsapp"></i> +7 (705) 123-45-67</li>
-                    <li><i class="fab fa-instagram"></i> @altyn_orda</li>
-                    <li><i class="fas fa-clock"></i> Пн–Вс: 10:00–23:00</li>
-                </ul>
-            </div>
-            <div>
-                <form id="contactForm">
-                    <h3>Оставьте заявку</h3>
-                    <div class="form-group">
-                        <label>Ваше имя</label>
-                        <input type="text" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Телефон</label>
-                        <input type="tel" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Сообщение</label>
-                        <textarea></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width:100%;">Отправить</button>
-                </form>
-            </div>
+        <div class="contact-info">
+            <h3>Свяжитесь с нами</h3>
+            <ul>
+                <li>г. Алматы, ул. Абая 150</li>
+                <li>+7 (705) 123-45-67</li>
+                <li>+7 (705) 123-45-67</li>
+                <li><a href="https://instagram.com/altyn_orda" target="_blank">@altyn_orda</a></li>
+                <li>Пн–Вс: 10:00–23:00</li>
+            </ul>
         </div>
         <div class="map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.242215782074!2d76.928418315432!3d43.2381859791388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836e1d6b5f5c6d%3A0x9d3f5e5e5e5e5e5e!2sAlmaty%2C%20Kazakhstan!5e0!3m2!1sen!2sus!4v1698000000000" allowfullscreen="" loading="lazy"></iframe>
@@ -522,14 +471,14 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Тойхана «Алтын Орда». Все права защищены.</p>
+        <p>© 2025 Тойхана «Алтын Орда». Все права защищены.</p>
         <div class="social">
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/77051234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/altyn_orda" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
 
-    <!-- WhatsApp Float -->
+    <!-- WhatsApp Float — ИСПРАВЛЕНО -->
     <a href="https://wa.me/77051234567?text=Здравствуйте!%20Хочу%20забронировать%20зал." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -559,34 +508,6 @@
             });
         });
 
-        // Close flip on click outside (optional)
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.flip-card')) {
-                document.querySelectorAll('.flip-card.flipped').forEach(card => {
-                    card.classList.remove('flipped');
-                });
-            }
-        });
-
-        // Catalog filter
-        const filters = document.querySelectorAll('.filters button');
-        const cards = document.querySelectorAll('.flip-card');
-        filters.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filters.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                cards.forEach(card => {
-                    card.style.display = 'block';
-                    if (filter === 'all') return;
-                    if (filter === 'price-low' && card.dataset.price > 500000) card.style.display = 'none';
-                    if (filter === 'price-high' && card.dataset.price <= 500000) card.style.display = 'none';
-                    if (filter === 'capacity-small' && card.dataset.capacity > 100) card.style.display = 'none';
-                    if (filter === 'capacity-large' && card.dataset.capacity <= 100) card.style.display = 'none';
-                });
-            });
-        });
-
         // Animation on scroll
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -596,24 +517,14 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.flip-card, .review').forEach(el => observer.observe(el));
+        document.querySelectorAll('.flip-card, .menu-card').forEach(el => observer.observe(el));
 
         // Swiper
         new Swiper('.swiper', {
             loop: true,
             autoplay: { delay: 3000 },
             pagination: { el: '.swiper-pagination', clickable: true },
-            breakpoints: {
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
-
-        // Form submit (demo)
-        document.getElementById('contactForm').addEventListener('submit', e => {
-            e.preventDefault();
-            alert('Спасибо! Ваша заявка отправлена.');
+            breakpoints: { 640: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
         });
     </script>
 </body>
