@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тойхана «Алтын Орда» – Банкетные залы в Алматы</title>
+
+    <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Glide CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/css/glide.theme.min.css">
+
+    <!-- Swiper CSS (было упущено) -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
     <style>
         :root {
             --gold: #D4AF37;
@@ -46,7 +57,8 @@
         /* Hero */
         .hero {
             height:100vh;
-            background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+                        url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
             display:flex; flex-direction:column; justify-content:center; align-items:center;
             text-align:center; color:#fff; padding:0 1rem;
         }
@@ -63,7 +75,7 @@
         h2 { text-align:center; font-size:2.2rem; margin-bottom:3rem; color:var(--dark); position:relative; }
         h2::after { content:''; width:80px; height:3px; background:var(--gold); position:absolute; bottom:-15px; left:50%; transform:translateX(-50%); }
 
-        /* === НАШИ ЗАЛЫ — КОМПАКТНЫЕ === */
+        /* === ЗАЛЫ === */
         .halls-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -139,7 +151,7 @@
             height: 100%;
         }
         .back-image { height: 140px; width: 100%; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
-        .flip-card-back h3 { color: var(--gold); margin-bottom: 1rem; font-size: 1.3rem; }
+        .flip-card-back h3 { color:var(--gold); margin-bottom:1rem; font-size:1.3rem; }
         .flip-card-back ul {
             list-style: none;
             text-align: left;
@@ -150,16 +162,10 @@
         .flip-card-back ul li {
             margin-bottom: 0.7rem;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 1.8rem;
             font-size: 0.95rem;
         }
-        .flip-card-back ul li::before {
-            content: '✓';
-            color: var(--gold);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
+
         .back-btn {
             background: var(--dark);
             color: #fff;
@@ -172,22 +178,31 @@
             min-width: 120px;
         }
 
-        /* === МЕНЮ — ИСПРАВЛЕНО: КАРТИНКИ НЕ ВЫЛЕЗАЮТ === */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
+        /* === ГАЛОЧКИ — ИСПРАВЛЕНО === */
+        .flip-card-back ul li::before,
+        .menu-body ul li::before {
+            content: '\f00c';                     /* галочка Font Awesome */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
         }
+
+        /* === МЕНЮ — GLIDE.JS === */
+        .glide { margin-top: 2rem; position: relative; }
+
+        .glide__slide { padding: 0 10px; }
 
         .menu-card {
             background: #fff;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             opacity: 0;
             transform: translateY(30px);
             transition: all .6s;
@@ -203,6 +218,9 @@
 
         .menu-body {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .menu-body h3 {
@@ -223,26 +241,77 @@
         .menu-body ul {
             list-style: none;
             text-align: left;
+            flex-grow: 1;
+            padding-left: 0;
         }
 
         .menu-body ul li {
             margin-bottom: .6rem;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 1.8rem;
             font-size: .95rem;
         }
 
-        .menu-body ul li::before {
-            content: '✓';
-            color: var(--gold);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
+        /* Glide Arrows */
+        .glide__arrows { margin-top: 1rem; text-align: center; }
+        .glide__arrow {
+            background: var(--gold);
+            color: #fff;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all .3s;
+        }
+        .glide__arrow:hover { background: #b8932a; transform: scale(1.1); }
+
+        /* Glide Bullets */
+        .glide__bullets {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1rem;
+        }
+        .glide__bullet {
+            width: 10px;
+            height: 10px;
+            background: #ccc;
+            border-radius: 50%;
+            transition: all .3s;
+        }
+        .glide__bullet--active {
+            background: var(--gold);
+            transform: scale(1.3);
         }
 
-        /* Gallery */
-        .swiper { padding:2rem 0; }
-        .swiper-slide img { border-radius:10px; height:250px; object-fit:cover; }
+        /* === ГАЛЕРЕЯ — SWIPER (ИСПРАВЛЕНО) === */
+        .gallery-swiper {
+            padding: 2rem 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all .6s;
+        }
+        .gallery-swiper.show { opacity: 1; transform: none; }
+
+        .gallery-swiper .swiper-slide {
+            height: auto;
+            aspect-ratio: 4 / 3;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .gallery-swiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .3s ease;
+        }
+        .gallery-swiper .swiper-slide img:hover {
+            transform: scale(1.05);
+        }
 
         /* Instagram Reviews */
         .instagram-reviews {
@@ -277,7 +346,7 @@
         .social a { color:#fff; font-size:1.5rem; margin:0 .5rem; transition:color .3s; }
         .social a:hover { color:var(--gold); }
 
-        /* WhatsApp — ИСПРАВЛЕНО: ИКОНКА ВНУТРИ */
+        /* WhatsApp */
         .whatsapp-float {
             position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; width:60px; height:60px;
             border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.8rem;
@@ -392,52 +461,109 @@
         </div>
     </section>
 
-    <!-- Меню за 1 человека -->
+    <!-- Меню — GLIDE.JS -->
     <section id="menu" style="background:#fff;">
-        <h2>Цена за одного человека</h2>
-        <div class="menu-grid">
-            <!-- Меню 3500 -->
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Меню 3500">
-                <div class="menu-body">
-                    <h3>Стандарт</h3>
-                    <div class="price-per-person">3 500 ₸</div>
-                    <ul>
-                        <li>Салат "Цезарь"</li>
-                        <li>Горячее: курица с картофелем</li>
-                        <li>Фруктовая нарезка</li>
-                        <li>Хлеб, чай, вода</li>
-                    </ul>
-                </div>
+        <h2>Меню за 1 человека</h2>
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+
+                    <li class="glide__slide">
+                        <div class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="3500">
+                            <div class="menu-body">
+                                <h3>Стандарт</h3>
+                                <div class="price-per-person">3 500 ₸</div>
+                                <ul>
+                                    <li>Салат "Цезарь"</li>
+                                    <li>Горячее: курица с картофелем</li>
+                                    <li>Фруктовая нарезка</li>
+                                    <li>Хлеб, чай, вода</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="glide__slide">
+                        <div class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="4000">
+                            <div class="menu-body">
+                                <h3>Комфорт</h3>
+                                <div class="price-per-person">4 000 ₸</div>
+                                <ul>
+                                    <li>Салат "Греческий"</li>
+                                    <li>Горячее: говядина с рисом</li>
+                                    <li>Мясная нарезка</li>
+                                    <li>Десерт: мороженое</li>
+                                    <li>Безлимитный чай</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="glide__slide">
+                        <div class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1606890737304-3955c48f4295?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="5500">
+                            <div class="menu-body">
+                                <h3>Премиум</h3>
+                                <div class="price-per-person">5 500 ₸</div>
+                                <ul>
+                                    <li>Салат с морепродуктами</li>
+                                    <li>Горячее: стейк с овощами</li>
+                                    <li>Рыбная нарезка</li>
+                                    <li>Торт на выбор</li>
+                                    <li>Безлимитные напитки</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="glide__slide">
+                        <div class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="7000">
+                            <div class="menu-body">
+                                <h3>VIP</h3>
+                                <div class="price-per-person">7 000 ₸</div>
+                                <ul>
+                                    <li>Салат с красной икрой</li>
+                                    <li>Горячее: филе-миньон</li>
+                                    <li>Морепродукты на гриле</li>
+                                    <li>Фирменный торт</li>
+                                    <li>Алкоголь в подарок</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
             </div>
 
-            <!-- Меню 5000 -->
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Меню 5000">
-                <div class="menu-body">
-                    <h3>Премиум</h3>
-                    <div class="price-per-person">5 000 ₸</div>
-                    <ul>
-                        <li>Салат "Греческий"</li>
-                        <li>Горячее: стейк с овощами</li>
-                        <li>Морепродукты</li>
-                        <li>Десерт: тирамису</li>
-                        <li>Безлимитные напитки</li>
-                    </ul>
-                </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-chevron-left"></i></button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-chevron-right"></i></button>
             </div>
+
+            <div class="glide__bullets" data-glide-el="controls[nav]"></div>
         </div>
     </section>
 
-    <!-- Gallery -->
+    <!-- Галерея — SWIPER -->
     <section id="gallery">
         <h2>Галерея мероприятий</h2>
-        <div class="swiper">
+        <div class="swiper gallery-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 1"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1464366400600-7168bc0bbd9d?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 2"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 3"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1606890737304-3955c48f4295?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 4"></div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168bc0bbd9d?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 3">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1606890737304-3955c48f4295?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt="Event 4">
+                </div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -478,12 +604,13 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float — ИСПРАВЛЕНО -->
+    <!-- WhatsApp -->
     <a href="https://wa.me/77051234567?text=Здравствуйте!%20Хочу%20забронировать%20зал." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/glide.min.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script>
         // Mobile menu
@@ -517,16 +644,33 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.flip-card, .menu-card').forEach(el => observer.observe(el));
+        document.querySelectorAll('.flip-card, .menu-card, .gallery-swiper').forEach(el => observer.observe(el));
 
-        // Swiper
-        new Swiper('.swiper', {
+        // Glide.js Menu Slider
+        new Glide('.glide', {
+            type: 'carousel',
+            perView: 3,
+            focusAt: 'center',
+            gap: 20,
+            autoplay: 4000,
+            hoverpause: true,
+            breakpoints: {
+                1024: { perView: 2 },
+                768: { perView: 1 }
+            }
+        }).mount();
+
+        // Swiper Gallery
+        new Swiper('.gallery-swiper', {
             loop: true,
             autoplay: { delay: 3000 },
             pagination: { el: '.swiper-pagination', clickable: true },
-            breakpoints: { 640: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+            breakpoints: {
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
         });
     </script>
 </body>
 </html>
-
