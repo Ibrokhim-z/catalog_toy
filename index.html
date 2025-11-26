@@ -370,6 +370,34 @@
             .flip-card-front img, .back-image, .menu-card img { height: 160px; }
             .card-body, .flip-card-back, .menu-body { padding: 1.2rem; }
         }
+
+        .logo-with-text {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: #000; /* на случай, если фон прозрачный */
+        }
+
+        .logo-text span {
+            color: var(--dark);
+        }
+
+        /* На мобильных чуть уменьшаем */
+        @media (max-width: 768px) {
+            .logo-icon { width: 44px; height: 44px; }
+            .logo-with-text { font-size: 1.35rem; gap: 10px; }
+        }
     </style>
 </head>
 <body>
@@ -377,19 +405,24 @@
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <div class="logo">River <span>Hall</span></div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Главная</a></li>
-                    <li><a href="#halls">Залы</a></li>
-                    <li><a href="#menu">Меню</a></li>
-                    <li><a href="#gallery">Галерея</a></li>
-                    <li><a href="#reviews">Отзывы</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
-        </div>
+    <!-- ЛОГОТИП СЛЕВА + НАДПИСЬ -->
+    <a href="#home" class="logo-with-text">
+        <img src="logo.png" alt="River Hall" class="logo-icon">
+        <span class="logo-text">River <span>Hall</span></span>
+    </a>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#halls">Залы</a></li>
+            <li><a href="#menu">Меню</a></li>
+            <li><a href="#gallery">Галерея</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+    <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
+</div>
     </header>
 
     <!-- Hero -->
@@ -411,7 +444,7 @@
                     <div class="flip-card-front">
                         <img src="hall.jpg" alt="River Hall – Киши зал">
                         <div class="card-body">
-                            <h3>Маленький зал</h3>
+                            <h3>Киши зал</h3>
                             <p>Идеально для камерных торжеств</p>
                             <p class="capacity"><i class="fas fa-users"></i> До 150 гостей</p>
                             <div class="btn flip-trigger">Подробнее</div>
@@ -419,7 +452,7 @@
                     </div>
                     <div class="flip-card-back">
                         <img src="hall.jpg" alt="Интерьер Киши зал" style="height:180px; object-fit:cover; border-radius:12px; margin-bottom:1rem;">
-                        <h3>Маленький зал</h3>
+                        <h3>Киши зал</h3>
                         <ul>
                             <li>Уютный премиум-интерьер</li>
                             <li>Профессиональный звук и свет</li>
@@ -438,7 +471,7 @@
                     <div class="flip-card-front">
                         <img src="river.jpg" alt="River Hall – Уюк зал">
                         <div class="card-body">
-                            <h3>Большой зал</h3>
+                            <h3>Уюк зал</h3>
                             <p>Грандиозные торжества до 300 человек</p>
                             <p class="capacity"><i class="fas fa-users"></i> До 300 гостей</p>
                             <div class="btn flip-trigger">Подробнее</div>
@@ -446,7 +479,7 @@
                     </div>
                     <div class="flip-card-back">
                         <img src="river.jpg" alt="Интерьер Уюк зал" style="height:180px; object-fit:cover; border-radius:12px; margin-bottom:1rem;">
-                        <h3>Большой зал</h3>
+                        <h3>Уюк зал</h3>
                         <ul>
                             <li>Панорамная сцена</li>
                             <li>Профессиональное световое шоу</li>
@@ -471,7 +504,15 @@
 
                     <li class="glide__slide">
                         <div class="menu-card">
-                            <img src="ri.jpg" alt="3500">
+                            <!-- Обёртка с лёгким обрезанием сверху/снизу, но без потери сути -->
+                            <div style="height:270px; overflow:hidden; border-radius:15px 15px 0 0; background:#fff;">
+                                <img src="ri.jpg" 
+                                    alt="Меню Стандарт 3500 ₸" 
+                                    style="width:100%; height:auto; display:block; 
+                                            transform:translateY(-10%); 
+                                            filter:brightness(1.02) contrast(1.05);">
+                            </div>
+                            
                             <div class="menu-body">
                                 <h3>Стандарт</h3>
                                 <div class="price-per-person">3 500 ₸</div>
@@ -485,52 +526,33 @@
                         </div>
                     </li>
 
-                    <li class="glide__slide">
-                        <div class="menu-card">
-                            <img src="ver.jpg" alt="4000">
-                            <div class="menu-body">
-                                <h3>Комфорт</h3>
-                                <div class="price-per-person">4 000 ₸</div>
-                                <ul>
-                                    <li>Салат "Греческий"</li>
-                                    <li>Горячее: говядина с рисом</li>
-                                    <li>Мясная нарезка</li>
-                                    <li>Десерт: мороженое</li>
-                                    <li>Безлимитный чай</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
 
                     <li class="glide__slide">
                         <div class="menu-card">
-                            <img src="ri.jpg" alt="5500">
-                            <div class="menu-body">
-                                <h3>Премиум</h3>
-                                <div class="price-per-person">5 500 ₸</div>
-                                <ul>
-                                    <li>Салат с морепродуктами</li>
-                                    <li>Горячее: стейк с овощами</li>
-                                    <li>Рыбная нарезка</li>
-                                    <li>Торт на выбор</li>
-                                    <li>Безлимитные напитки</li>
-                                </ul>
+                            <!-- Картинка VIP — аккуратный кроп сверху и снизу -->
+                            <div style="height:270px; overflow:hidden; border-radius:15px 15px 0 0; background:#fff;">
+                                <img src="ver.jpg" 
+                                    alt="Меню VIP 7000 ₸" 
+                                    style="width:100%; height:auto; display:block; 
+                                            transform:translateY(-15%);     /* именно -15% идеально для этой фотки */
+                                            filter:brightness(1.03) contrast(1.05);">
                             </div>
-                        </div>
-                    </li>
 
-                    <li class="glide__slide">
-                        <div class="menu-card">
-                            <img src="ver.jpg" alt="7000">
                             <div class="menu-body">
                                 <h3>VIP</h3>
                                 <div class="price-per-person">7 000 ₸</div>
                                 <ul>
-                                    <li>Салат с красной икрой</li>
-                                    <li>Горячее: филе-миньон</li>
-                                    <li>Морепродукты на гриле</li>
-                                    <li>Фирменный торт</li>
-                                    <li>Алкоголь в подарок</li>
+                                    <li>Первое блюдо мясо с нас</li>
+                                    <li>Второе блюдо на выбор</li>
+                                    <li>3 вида салата на выбор (6шт)</li>
+                                    <li>Бауырсаки и жареный пельмени 2 тарелки</li>
+                                    <li>Фрукты 1 ваза</li>
+                                    <li>Ассорти мясной 2 тарелка</li>
+                                    <li>Ассорти куриный 2 тарелка</li>
+                                    <li>Конфеты 2 тарелки (Snikers, Twix, Milkway, Albeni)</li>
+                                    <li>Печеные 2 тарелки</li>
+                                    <li>Самса 12 шт</li>
+                                    <li>Напитки 8 шт (Coca Cola, Fanta, Piko сок, Aysu без газа)</li>
                                 </ul>
                             </div>
                         </div>
@@ -598,7 +620,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 Тойхана «River Hall». Все права защищены.</p>
+        <p>© 2025 Тойхана «Алтын Орда». Все права защищены.</p>
         <div class="social">
             <a href="https://wa.me/77051234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="https://instagram.com/altyn_orda" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -675,9 +697,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
